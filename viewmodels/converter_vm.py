@@ -6,6 +6,7 @@ class ConverterViewModel:
         """Initialize viewmodel state."""
         self.selected_file = None
         self.active_converter = None
+        self.active_summary_parser = None
 
     def select_file(self):
         """Open file dialog and store selected C3D file path."""
@@ -28,7 +29,7 @@ class ConverterViewModel:
         if self.active_converter is None:
             self.active_converter = 1 
         else:
-            self.active_converter is None
+            self.active_converter = None
     
     def is_conversion_running(self):
         """ Check if a conversion operation is running """
@@ -52,7 +53,7 @@ class ConverterViewModel:
         if self.active_summary_parser is None:
             self.active_summary_parser = 1 
         else:
-            self.active_summary_parser is None
+            self.active_summary_parser = None
 
     def is_summary_running(self):
         """ Check if a summary parse operation is in progress """
