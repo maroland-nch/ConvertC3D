@@ -22,7 +22,7 @@ class SummaryConvertOperation(ConversionOperation):
 class SummaryConverter(Converter):
     def create_operation(self):
         """ Create the specific implementation of a ConversionOperation """
-        operation = SummaryConverter()
+        operation = SummaryConvertOperation()
         operation.initialize(self, self._source_path)
         return operation
 
