@@ -1,4 +1,5 @@
-from ui.main_window import run_app
+from ui.main_window import build_ui
 
 if __name__ == "__main__":
-    run_app()
+    app = build_ui()
+    app.mainloop()
