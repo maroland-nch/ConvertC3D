@@ -1,5 +1,6 @@
 from tkinter import filedialog
-from models.converter import convert_c3d_to_fbx
+from models.fbx_converter import FbxConverter
+from models.summary_converter import SummaryConverter
 
 class ConverterViewModel:
     def __init__(self):
@@ -27,39 +28,55 @@ class ConverterViewModel:
     
     def convert(self):
         """ Begin the process of converting the file, if one is selected"""
-        # Placeholder
-        if self.active_converter is None:
-            self.active_converter = 1 
-            self.converted = None
-        else:
-            self.active_converter = None
-            self.converted = "Placeholder conversion"
+        if not self.active_converter is None:
+            return
+        
+        if self.selected_file is None:
+            return
+        
+        self.active_converter = FbxConverter()
+        self.active_converter.initialize(self.select_file)
+        self.active_converter.start()
     
     def is_conversion_running(self):
         """ Check if a conversion operation is running """
-        return self.active_converter is not None
+        if self.active_converter is None:
+            return False
+        
+        return self.active_converter.is_running()
     
     def is_conversion_available(self):
         """ Check if converted data was successfully generated"""
-        return self.converted is not None
+        if self.active_converter is None:
+            return False
+        
+        return self.active_converter.is_result_available()
     
     def is_conversion_successful(self):
         """ Check if the last conversion operation was successful """
-        return self.converted is not None
+        if self.active_converter is None:
+            return False
+        
+        return self.active_converter.is_successful()
     
     def summarize(self):
         """ Begin the process of summarizing the source c3d file, if one is selected """
-        # Placeholder
-        if self.active_summary_parser is None:
-            self.summary is None
-            self.active_summary_parser = 1 
-        else:
-            self.active_summary_parser = None
-            self.summary = "Placeholder summary"
+        if not self.active_summary_parser is None:
+            return
+        
+        if self.selected_file is None:
+            return
+        
+        self.active_summary_parser = SummaryConverter()
+        self.active_summary_parser.initialize(self.select_file)
+        self.active_summary_parser.start()
 
     def is_summary_running(self):
         """ Check if a summary parse operation is in progress """
-        return self.active_summary_parser is not None
+        if self.active_summary_parser is None:
+            return False
+        
+        return self.active_summary_parser.is_running()
     
     def is_summary_available(self):
         """ Check if summary data is parsed and available """
