@@ -43,7 +43,7 @@ class ConverterViewModel:
         if self.active_converter is None:
             return False
         
-        return self.active_converter.is_running()
+        return self.active_converter._is_running()
     
     def is_conversion_available(self):
         """ Check if converted data was successfully generated"""
@@ -76,7 +76,7 @@ class ConverterViewModel:
         if self.active_summary_parser is None:
             return False
         
-        return self.active_summary_parser.is_running()
+        return self.active_summary_parser._is_running()
     
     def is_summary_available(self):
         """ Check if summary data is parsed and available """

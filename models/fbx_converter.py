@@ -1,30 +1,21 @@
-from models.converter import Converter
+from models.converter import ConversionOperation, Converter
 
+class FbxConverterOperation(ConversionOperation):
+    def 
 
 class FbxConverter(Converter):
-    def initialize(self, path):
-        pass
-
-    def set_source_path(self, path):
-        pass
-
-    def is_running(self):
-        pass
-    
-    def is_finished(self):
-        pass
-
-    def is_successful(self):
-        pass
-
-    def get_result(self):
+    def create_operation(self):
+        """ Create the specific implementation of a ConversionOperation """
         pass
 
     def start(self):
+        """ Start the converter operation """
         pass
 
     def force_stop(self):
+        """ Stop the conversion operation in progress """
         pass
 
     def on_finished(self, interrupted):
+        """ Clean up conversion operation, whether interrupted or finished gracefully """
         pass
