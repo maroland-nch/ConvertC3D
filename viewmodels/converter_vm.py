@@ -22,6 +22,25 @@ class ConverterViewModel:
         if path:
             self.selected_file = path
     
+    def convert(self):
+        pass
+    
     def is_conversion_running(self):
         return self.active_converter is not None
+    
+    def is_conversion_available(self):
+        pass
+    
+    def is_conversion_successful(self):
+        pass
+    
+    def summarize(self):
+        pass
+
+    def is_summary_running(self):
+        pass
+    
+    def is_summary_available(self):
+        pass
+
 
