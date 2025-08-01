@@ -7,6 +7,8 @@ class ConverterViewModel:
         self.selected_file = None
         self.active_converter = None
         self.active_summary_parser = None
+        self.summary = None
+        self.converted = None
 
     def select_file(self):
         """Open file dialog and store selected C3D file path."""
@@ -28,43 +30,39 @@ class ConverterViewModel:
         # Placeholder
         if self.active_converter is None:
             self.active_converter = 1 
+            self.converted = None
         else:
             self.active_converter = None
+            self.converted = "Placeholder conversion"
     
     def is_conversion_running(self):
         """ Check if a conversion operation is running """
         return self.active_converter is not None
     
     def is_conversion_available(self):
-        """ Check if conversion can be started"""
-        if self.selected_file is None:
-            return False
-        if self.active_converter is not None:
-            return False
-        return True
+        """ Check if converted data was successfully generated"""
+        return self.converted is not None
     
     def is_conversion_successful(self):
         """ Check if the last conversion operation was successful """
-        return False # Placeholder
+        return self.converted is not None
     
     def summarize(self):
         """ Begin the process of summarizing the source c3d file, if one is selected """
         # Placeholder
         if self.active_summary_parser is None:
+            self.summary is None
             self.active_summary_parser = 1 
         else:
             self.active_summary_parser = None
+            self.summary = "Placeholder summary"
 
     def is_summary_running(self):
         """ Check if a summary parse operation is in progress """
         return self.active_summary_parser is not None
     
     def is_summary_available(self):
-        """ Check if summary parsing is available to be started """
-        if self.selected_file is None:
-            return False
-        if self.active_summary_parser is not None:
-            return False
-        return True
+        """ Check if summary data is parsed and available """
+        return self.summary is not None
 
 
