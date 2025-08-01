@@ -23,24 +23,47 @@ class ConverterViewModel:
             self.selected_file = path
     
     def convert(self):
-        pass
+        """ Begin the process of converting the file, if one is selected"""
+        # Placeholder
+        if self.active_converter is None:
+            self.active_converter = 1 
+        else:
+            self.active_converter is None
     
     def is_conversion_running(self):
+        """ Check if a conversion operation is running """
         return self.active_converter is not None
     
     def is_conversion_available(self):
-        pass
+        """ Check if conversion can be started"""
+        if self.selected_file is None:
+            return False
+        if self.active_converter is not None:
+            return False
+        return True
     
     def is_conversion_successful(self):
-        pass
+        """ Check if the last conversion operation was successful """
+        return False # Placeholder
     
     def summarize(self):
-        pass
+        """ Begin the process of summarizing the source c3d file, if one is selected """
+        # Placeholder
+        if self.active_summary_parser is None:
+            self.active_summary_parser = 1 
+        else:
+            self.active_summary_parser is None
 
     def is_summary_running(self):
-        pass
+        """ Check if a summary parse operation is in progress """
+        return self.active_summary_parser is not None
     
     def is_summary_available(self):
-        pass
+        """ Check if summary parsing is available to be started """
+        if self.selected_file is None:
+            return False
+        if self.active_summary_parser is not None:
+            return False
+        return True
 
 
