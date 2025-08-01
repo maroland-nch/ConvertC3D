@@ -1,0 +1,21 @@
+[project]
+name = "mocap-converter"
+version = "0.1.0"
+description = "Mocap Converter is a simple application to convert C3D motion capture files into .fbx"
+authors = [
+    {name = "Max Roland"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ezc3d (>=1.5.19,<2.0.0)"
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
